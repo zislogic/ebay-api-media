@@ -1,0 +1,49 @@
+{
+    "name": "zislogic/ebay-api-media",
+    "description": "eBay Commerce Media API client for Laravel — image, video, and document uploads to EPS",
+    "type": "library",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../ebay-connector"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "zislogic/ebay-connector": "@dev",
+        "guzzlehttp/guzzle": "^7.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^10.0",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zislogic\\Ebay\\Api\\Media\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zislogic\\Ebay\\Api\\Media\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zislogic\\Ebay\\Api\\Media\\EbayMediaServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=512M",
+        "generate": "bash generate.sh"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

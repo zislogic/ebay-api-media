@@ -1,0 +1,8 @@
+/vendor/
+/node_modules/
+.phpunit.result.cache
+.phpunit.cache/
+composer.lock
+tmp-generated/
+.idea/
+.DS_Store
