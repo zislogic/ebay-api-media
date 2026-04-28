@@ -1,12 +1,14 @@
 <?php
+
 /**
  * CreateImageFromUrlRequest
  *
  * PHP version 8.1
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 
@@ -28,64 +30,69 @@
 
 namespace Zislogic\Ebay\Api\Media\Generated\Model;
 
-use \ArrayAccess;
-use \Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
+use ArrayAccess;
+use Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
 
 /**
  * CreateImageFromUrlRequest Class Doc Comment
  *
  * @category Class
+ *
  * @description A type that provides the location of the image.
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
- * @implements \ArrayAccess<string, mixed>
+ *
+ * @implements ArrayAccess<string, mixed>
  */
-class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateImageFromUrlRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'CreateImageFromUrlRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'imageUrl' => 'string'
+        'imageUrl' => 'string',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'imageUrl' => null
+        'imageUrl' => null,
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
-        'imageUrl' => false
+        'imageUrl' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -110,8 +117,6 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
 
     /**
      * Array of nullable properties
-     *
-     * @return array
      */
     protected static function openAPINullables(): array
     {
@@ -121,7 +126,7 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Array of nullable field names deliberately set to null
      *
-     * @return boolean[]
+     * @return bool[]
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -131,7 +136,7 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Setter - Array of nullable field names deliberately set to null
      *
-     * @param boolean[] $openAPINullablesSetToNull
+     * @param  bool[]  $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
@@ -140,9 +145,6 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
 
     /**
      * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
      */
     public static function isNullable(string $property): bool
     {
@@ -151,9 +153,6 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
 
     /**
      * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
      */
     public function isNullableSetToNull(string $property): bool
     {
@@ -167,7 +166,7 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'imageUrl' => 'imageUrl'
+        'imageUrl' => 'imageUrl',
     ];
 
     /**
@@ -176,7 +175,7 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'imageUrl' => 'setImageUrl'
+        'imageUrl' => 'setImageUrl',
     ];
 
     /**
@@ -185,7 +184,7 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'imageUrl' => 'getImageUrl'
+        'imageUrl' => 'getImageUrl',
     ];
 
     /**
@@ -229,7 +228,6 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -240,8 +238,8 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Constructor
      *
-     * @param mixed[]|null $data Associated array of property values
-     *                      initializing the model
+     * @param  mixed[]|null  $data  Associated array of property values
+     *                              initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -249,14 +247,12 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param  mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -289,7 +285,6 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
      * Gets imageUrl
      *
@@ -303,8 +298,7 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets imageUrl
      *
-     * @param string|null $imageUrl The image URL of the self-hosted picture to upload to eBay Picture Services (EPS). In addition to the picture requirements in <a href=\"https://www.ebay.com/help/policies/listing-policies/picture-policy?id=4370\" target=\"_blank\">Picture policy</a>, the provided URL must be secured using HTTPS (HTTP is not permitted). For more information, see <a href=\"/api-docs/sell/static/inventory/managing-image-media.html#image-requirements\" target=\"_blank\">Image requirements</a>.
-     *
+     * @param  string|null  $imageUrl  The image URL of the self-hosted picture to upload to eBay Picture Services (EPS). In addition to the picture requirements in <a href=\"https://www.ebay.com/help/policies/listing-policies/picture-policy?id=4370\" target=\"_blank\">Picture policy</a>, the provided URL must be secured using HTTPS (HTTP is not permitted). For more information, see <a href=\"/api-docs/sell/static/inventory/managing-image-media.html#image-requirements\" target=\"_blank\">Image requirements</a>.
      * @return self
      */
     public function setImageUrl($imageUrl)
@@ -316,12 +310,11 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer|string $offset Offset
-     *
-     * @return boolean
+     * @param  int|string  $offset  Offset
      */
     public function offsetExists(mixed $offset): bool
     {
@@ -331,8 +324,7 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets offset.
      *
-     * @param integer|string $offset Offset
-     *
+     * @param  int|string  $offset  Offset
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
@@ -344,10 +336,8 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
-     * @param mixed    $value  Value to be set
-     *
-     * @return void
+     * @param  int|null  $offset  Offset
+     * @param  mixed  $value  Value to be set
      */
     public function offsetSet($offset, $value): void
     {
@@ -361,9 +351,7 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Unsets offset.
      *
-     * @param integer|string $offset Offset
-     *
-     * @return void
+     * @param  int|string  $offset  Offset
      */
     public function offsetUnset(mixed $offset): void
     {
@@ -372,15 +360,16 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
+     *
      * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     *               of any type other than a resource.
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -406,5 +395,3 @@ class CreateImageFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSer
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

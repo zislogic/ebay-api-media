@@ -6,6 +6,7 @@ namespace Zislogic\Ebay\Api\Media\Commands;
 
 use Illuminate\Console\Command;
 use Zislogic\Ebay\Api\Media\EbayMediaClient;
+use Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse;
 use Zislogic\Ebay\Api\Media\Models\EbayMediaImage;
 use Zislogic\Ebay\Connector\Concerns\HandlesEbayApiErrors;
 
@@ -29,7 +30,7 @@ final class UploadImageCommand extends Command
         /** @var string $filePath */
         $filePath = $this->argument('file_path');
 
-        if (!file_exists($filePath)) {
+        if (! file_exists($filePath)) {
             $this->error("File not found: {$filePath}");
 
             return self::FAILURE;
@@ -37,7 +38,7 @@ final class UploadImageCommand extends Command
 
         $this->info("Uploading {$filePath} to EPS...");
 
-        /** @var \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse $response */
+        /** @var ImageResponse $response */
         $response = $this->callWithRetry(
             fn () => $client->uploadImageFromFile($credentialId, $filePath),
         );
@@ -56,7 +57,7 @@ final class UploadImageCommand extends Command
             'expiration_date' => $expiration,
         ]);
 
-        $this->info("Image uploaded successfully.");
+        $this->info('Image uploaded successfully.');
         $this->line("  URL: {$imageUrl}");
 
         if ($maxUrl !== null) {

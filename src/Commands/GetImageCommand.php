@@ -6,6 +6,7 @@ namespace Zislogic\Ebay\Api\Media\Commands;
 
 use Illuminate\Console\Command;
 use Zislogic\Ebay\Api\Media\EbayMediaClient;
+use Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse;
 use Zislogic\Ebay\Connector\Concerns\HandlesEbayApiErrors;
 
 final class GetImageCommand extends Command
@@ -30,14 +31,14 @@ final class GetImageCommand extends Command
 
         $this->info("Fetching image details for {$imageId}...");
 
-        /** @var \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse $response */
+        /** @var ImageResponse $response */
         $response = $this->callWithRetry(
             fn () => $client->image($credentialId)->getImage($imageId),
         );
 
-        $this->line("  URL: " . ($response->getImageUrl() ?? 'N/A'));
-        $this->line("  Max dimension URL: " . ($response->getMaxDimensionImageUrl() ?? 'N/A'));
-        $this->line("  Expires: " . ($response->getExpirationDate() ?? 'N/A'));
+        $this->line('  URL: '.($response->getImageUrl() ?? 'N/A'));
+        $this->line('  Max dimension URL: '.($response->getMaxDimensionImageUrl() ?? 'N/A'));
+        $this->line('  Expires: '.($response->getExpirationDate() ?? 'N/A'));
 
         return self::SUCCESS;
     }

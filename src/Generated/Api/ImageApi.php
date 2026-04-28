@@ -1,11 +1,13 @@
 <?php
+
 /**
  * ImageApi
  * PHP version 8.1
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 
@@ -31,23 +33,27 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Zislogic\Ebay\Api\Media\Generated\ApiException;
 use Zislogic\Ebay\Api\Media\Generated\Configuration;
-use Zislogic\Ebay\Api\Media\Generated\FormDataProcessor;
 use Zislogic\Ebay\Api\Media\Generated\HeaderSelector;
+use Zislogic\Ebay\Api\Media\Generated\Model\CreateImageFromUrlRequest;
+use Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse;
 use Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
 
 /**
  * ImageApi Class Doc Comment
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 class ImageApi
@@ -72,7 +78,7 @@ class ImageApi
      */
     protected $hostIndex;
 
-    /** @var string[] $contentTypes **/
+    /** @var string[] * */
     public const contentTypes = [
         'createImageFromFile' => [
             'application/json',
@@ -86,10 +92,7 @@ class ImageApi
     ];
 
     /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
+     * @param  int  $hostIndex  (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         ?ClientInterface $client = null,
@@ -97,16 +100,16 @@ class ImageApi
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
-        $this->client = $client ?: new Client();
+        $this->client = $client ?: new Client;
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->headerSelector = $selector ?: new HeaderSelector;
         $this->hostIndex = $hostIndex;
     }
 
     /**
      * Set the host index
      *
-     * @param int $hostIndex Host index (required)
+     * @param  int  $hostIndex  Host index (required)
      */
     public function setHostIndex($hostIndex): void
     {
@@ -134,28 +137,29 @@ class ImageApi
     /**
      * Operation createImageFromFile
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
+     * @return ImageResponse
      *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse
      */
     public function createImageFromFile(string $contentType = self::contentTypes['createImageFromFile'][0])
     {
-        list($response) = $this->createImageFromFileWithHttpInfo($contentType);
+        [$response] = $this->createImageFromFileWithHttpInfo($contentType);
+
         return $response;
     }
 
     /**
      * Operation createImageFromFileWithHttpInfo
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
      * @return array of \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function createImageFromFileWithHttpInfo(string $contentType = self::contentTypes['createImageFromFile'][0])
     {
@@ -183,8 +187,7 @@ class ImageApi
 
             $statusCode = $response->getStatusCode();
 
-
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse',
@@ -192,8 +195,6 @@ class ImageApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -224,7 +225,6 @@ class ImageApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -233,11 +233,11 @@ class ImageApi
     /**
      * Operation createImageFromFileAsync
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createImageFromFileAsync(string $contentType = self::contentTypes['createImageFromFile'][0])
     {
@@ -252,11 +252,11 @@ class ImageApi
     /**
      * Operation createImageFromFileAsyncWithHttpInfo
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createImageFromFileAsyncWithHttpInfo(string $contentType = self::contentTypes['createImageFromFile'][0])
     {
@@ -268,7 +268,7 @@ class ImageApi
             ->then(
                 function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
@@ -279,7 +279,7 @@ class ImageApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -302,11 +302,11 @@ class ImageApi
     /**
      * Create request for operation 'createImageFromFile'
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromFile'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function createImageFromFileRequest(string $contentType = self::contentTypes['createImageFromFile'][0])
     {
@@ -318,7 +318,6 @@ class ImageApi
             );
         }
 
-
         $resourcePath = '/image/create_image_from_file';
         $formParams = [];
         $queryParams = [];
@@ -326,16 +325,13 @@ class ImageApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($contentType !== null) {
             $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
-
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -349,7 +345,7 @@ class ImageApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -357,8 +353,8 @@ class ImageApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -366,8 +362,8 @@ class ImageApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -383,9 +379,10 @@ class ImageApi
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -394,30 +391,31 @@ class ImageApi
     /**
      * Operation createImageFromUrl
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateImageFromUrlRequest $createImageFromUrlRequest createImageFromUrlRequest (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateImageFromUrlRequest  $createImageFromUrlRequest  createImageFromUrlRequest (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
+     * @return ImageResponse
      *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse
      */
     public function createImageFromUrl($createImageFromUrlRequest, string $contentType = self::contentTypes['createImageFromUrl'][0])
     {
-        list($response) = $this->createImageFromUrlWithHttpInfo($createImageFromUrlRequest, $contentType);
+        [$response] = $this->createImageFromUrlWithHttpInfo($createImageFromUrlRequest, $contentType);
+
         return $response;
     }
 
     /**
      * Operation createImageFromUrlWithHttpInfo
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateImageFromUrlRequest $createImageFromUrlRequest (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateImageFromUrlRequest  $createImageFromUrlRequest  (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
      * @return array of \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function createImageFromUrlWithHttpInfo($createImageFromUrlRequest, string $contentType = self::contentTypes['createImageFromUrl'][0])
     {
@@ -445,8 +443,7 @@ class ImageApi
 
             $statusCode = $response->getStatusCode();
 
-
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse',
@@ -454,8 +451,6 @@ class ImageApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -486,7 +481,6 @@ class ImageApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -495,12 +489,12 @@ class ImageApi
     /**
      * Operation createImageFromUrlAsync
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateImageFromUrlRequest $createImageFromUrlRequest (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateImageFromUrlRequest  $createImageFromUrlRequest  (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createImageFromUrlAsync($createImageFromUrlRequest, string $contentType = self::contentTypes['createImageFromUrl'][0])
     {
@@ -515,12 +509,12 @@ class ImageApi
     /**
      * Operation createImageFromUrlAsyncWithHttpInfo
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateImageFromUrlRequest $createImageFromUrlRequest (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateImageFromUrlRequest  $createImageFromUrlRequest  (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createImageFromUrlAsyncWithHttpInfo($createImageFromUrlRequest, string $contentType = self::contentTypes['createImageFromUrl'][0])
     {
@@ -532,7 +526,7 @@ class ImageApi
             ->then(
                 function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
@@ -543,7 +537,7 @@ class ImageApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -566,12 +560,12 @@ class ImageApi
     /**
      * Create request for operation 'createImageFromUrl'
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateImageFromUrlRequest $createImageFromUrlRequest (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateImageFromUrlRequest  $createImageFromUrlRequest  (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createImageFromUrl'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function createImageFromUrlRequest($createImageFromUrlRequest, string $contentType = self::contentTypes['createImageFromUrl'][0])
     {
@@ -590,7 +584,6 @@ class ImageApi
             );
         }
 
-
         $resourcePath = '/image/create_image_from_url';
         $formParams = [];
         $queryParams = [];
@@ -598,16 +591,13 @@ class ImageApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($contentType !== null) {
             $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
-
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -615,8 +605,8 @@ class ImageApi
         // for model (json/xml)
         if (isset($createImageFromUrlRequest)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createImageFromUrlRequest));
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createImageFromUrlRequest));
             } else {
                 $httpBody = $createImageFromUrlRequest;
             }
@@ -628,7 +618,7 @@ class ImageApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -636,8 +626,8 @@ class ImageApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -645,8 +635,8 @@ class ImageApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -662,9 +652,10 @@ class ImageApi
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -673,28 +664,29 @@ class ImageApi
     /**
      * Operation getImage
      *
-     * @param  string $imageId This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
+     * @param  string  $imageId  This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
+     * @return ImageResponse
      *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse
      */
     public function getImage($imageId, string $contentType = self::contentTypes['getImage'][0])
     {
-        list($response) = $this->getImageWithHttpInfo($imageId, $contentType);
+        [$response] = $this->getImageWithHttpInfo($imageId, $contentType);
+
         return $response;
     }
 
     /**
      * Operation getImageWithHttpInfo
      *
-     * @param  string $imageId This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $imageId  This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
      * @return array of \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function getImageWithHttpInfo($imageId, string $contentType = self::contentTypes['getImage'][0])
     {
@@ -722,8 +714,7 @@ class ImageApi
 
             $statusCode = $response->getStatusCode();
 
-
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse',
@@ -731,8 +722,6 @@ class ImageApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -763,7 +752,6 @@ class ImageApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -772,11 +760,11 @@ class ImageApi
     /**
      * Operation getImageAsync
      *
-     * @param  string $imageId This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
+     * @param  string  $imageId  This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getImageAsync($imageId, string $contentType = self::contentTypes['getImage'][0])
     {
@@ -791,11 +779,11 @@ class ImageApi
     /**
      * Operation getImageAsyncWithHttpInfo
      *
-     * @param  string $imageId This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
+     * @param  string  $imageId  This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getImageAsyncWithHttpInfo($imageId, string $contentType = self::contentTypes['getImage'][0])
     {
@@ -807,7 +795,7 @@ class ImageApi
             ->then(
                 function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
@@ -818,7 +806,7 @@ class ImageApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -841,11 +829,11 @@ class ImageApi
     /**
      * Create request for operation 'getImage'
      *
-     * @param  string $imageId This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
+     * @param  string  $imageId  This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable). (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function getImageRequest($imageId, string $contentType = self::contentTypes['getImage'][0])
     {
@@ -857,7 +845,6 @@ class ImageApi
             );
         }
 
-
         $resourcePath = '/image/{image_id}';
         $formParams = [];
         $queryParams = [];
@@ -865,20 +852,17 @@ class ImageApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($imageId !== null) {
             $resourcePath = str_replace(
-                '{' . 'image_id' . '}',
+                '{'.'image_id'.'}',
                 ObjectSerializer::toPathValue($imageId),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -892,7 +876,7 @@ class ImageApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -900,8 +884,8 @@ class ImageApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -909,8 +893,8 @@ class ImageApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -926,9 +910,10 @@ class ImageApi
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -937,16 +922,17 @@ class ImageApi
     /**
      * Create http client option
      *
-     * @throws \RuntimeException on file opening failure
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
@@ -967,7 +953,7 @@ class ImageApi
         ResponseInterface $response
     ): array {
         if ($dataType === '\SplFileObject') {
-            $content = $response->getBody(); //stream goes to serializer
+            $content = $response->getBody(); // stream goes to serializer
         } else {
             $content = (string) $response->getBody();
             if ($dataType !== 'string') {
@@ -990,7 +976,7 @@ class ImageApi
         return [
             ObjectSerializer::deserialize($content, $dataType, []),
             $response->getStatusCode(),
-            $response->getHeaders()
+            $response->getHeaders(),
         ];
     }
 

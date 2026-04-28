@@ -1,12 +1,14 @@
 <?php
+
 /**
  * Video
  *
  * PHP version 8.1
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 
@@ -28,35 +30,38 @@
 
 namespace Zislogic\Ebay\Api\Media\Generated\Model;
 
-use \ArrayAccess;
-use \Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
+use ArrayAccess;
+use Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
 
 /**
  * Video Class Doc Comment
  *
  * @category Class
+ *
  * @description A response field that retrieves all the metadata for the video, including its &lt;b&gt;title&lt;/b&gt;, &lt;b&gt;classification&lt;/b&gt;, &lt;b&gt;size&lt;/b&gt;, &lt;b&gt;description&lt;/b&gt;, &lt;b&gt;status&lt;/b&gt;, &lt;b&gt;status message&lt;/b&gt; (if any), and &lt;b&gt;expiration date&lt;/b&gt;.
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
- * @implements \ArrayAccess<string, mixed>
+ *
+ * @implements ArrayAccess<string, mixed>
  */
-class Video implements ModelInterface, ArrayAccess, \JsonSerializable
+class Video implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'Video';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'classification' => 'string[]',
         'description' => 'string',
@@ -68,16 +73,18 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusMessage' => 'string',
         'thumbnail' => '\Zislogic\Ebay\Api\Media\Generated\Model\Image',
         'title' => 'string',
-        'videoId' => 'string'
+        'videoId' => 'string',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'classification' => null,
         'description' => null,
@@ -89,14 +96,14 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusMessage' => null,
         'thumbnail' => null,
         'title' => null,
-        'videoId' => null
+        'videoId' => null,
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'classification' => false,
         'description' => false,
@@ -108,14 +115,14 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusMessage' => false,
         'thumbnail' => false,
         'title' => false,
-        'videoId' => false
+        'videoId' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -140,8 +147,6 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Array of nullable properties
-     *
-     * @return array
      */
     protected static function openAPINullables(): array
     {
@@ -151,7 +156,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Array of nullable field names deliberately set to null
      *
-     * @return boolean[]
+     * @return bool[]
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -161,7 +166,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Setter - Array of nullable field names deliberately set to null
      *
-     * @param boolean[] $openAPINullablesSetToNull
+     * @param  bool[]  $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
@@ -170,9 +175,6 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
      */
     public static function isNullable(string $property): bool
     {
@@ -181,9 +183,6 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
      */
     public function isNullableSetToNull(string $property): bool
     {
@@ -207,7 +206,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusMessage' => 'statusMessage',
         'thumbnail' => 'thumbnail',
         'title' => 'title',
-        'videoId' => 'videoId'
+        'videoId' => 'videoId',
     ];
 
     /**
@@ -226,7 +225,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusMessage' => 'setStatusMessage',
         'thumbnail' => 'setThumbnail',
         'title' => 'setTitle',
-        'videoId' => 'setVideoId'
+        'videoId' => 'setVideoId',
     ];
 
     /**
@@ -245,7 +244,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusMessage' => 'getStatusMessage',
         'thumbnail' => 'getThumbnail',
         'title' => 'getTitle',
-        'videoId' => 'getVideoId'
+        'videoId' => 'getVideoId',
     ];
 
     /**
@@ -289,7 +288,6 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -300,8 +298,8 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Constructor
      *
-     * @param mixed[]|null $data Associated array of property values
-     *                      initializing the model
+     * @param  mixed[]|null  $data  Associated array of property values
+     *                              initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -319,14 +317,12 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param  mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -359,7 +355,6 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
      * Gets classification
      *
@@ -373,8 +368,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets classification
      *
-     * @param string[]|null $classification The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is <code>ITEM</code>.
-     *
+     * @param  string[]|null  $classification  The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is <code>ITEM</code>.
      * @return self
      */
     public function setClassification($classification)
@@ -400,8 +394,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description The description of the video. The video description is an optional field that can be set using the <a href=\" /api-docs/commerce/media/resources/video/methods/createVideo\" target=\"_blank\">createVideo</a> method.
-     *
+     * @param  string|null  $description  The description of the video. The video description is an optional field that can be set using the <a href=\" /api-docs/commerce/media/resources/video/methods/createVideo\" target=\"_blank\">createVideo</a> method.
      * @return self
      */
     public function setDescription($description)
@@ -427,8 +420,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expirationDate
      *
-     * @param string|null $expirationDate The date and time when an unused video will expire and be removed from the eBay Video Services server, in Coordinated Universal Time (UTC).<br><br>As long as a video is being used in an active listing, that video will remain on the server and be accessible. If a video is not being used on an active listing, its expiration date is automatically set to 30 days after the video's initial upload.
-     *
+     * @param  string|null  $expirationDate  The date and time when an unused video will expire and be removed from the eBay Video Services server, in Coordinated Universal Time (UTC).<br><br>As long as a video is being used in an active listing, that video will remain on the server and be accessible. If a video is not being used on an active listing, its expiration date is automatically set to 30 days after the video's initial upload.
      * @return self
      */
     public function setExpirationDate($expirationDate)
@@ -444,7 +436,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets moderation
      *
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\Moderation|null
+     * @return Moderation|null
      */
     public function getModeration()
     {
@@ -454,8 +446,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets moderation
      *
-     * @param \Zislogic\Ebay\Api\Media\Generated\Model\Moderation|null $moderation moderation
-     *
+     * @param  Moderation|null  $moderation  moderation
      * @return self
      */
     public function setModeration($moderation)
@@ -471,7 +462,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets playLists
      *
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\Play[]|null
+     * @return Play[]|null
      */
     public function getPlayLists()
     {
@@ -481,8 +472,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets playLists
      *
-     * @param \Zislogic\Ebay\Api\Media\Generated\Model\Play[]|null $playLists The playlist created for the uploaded video, which provides the streaming video URLs to play the video. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming). The playlist will only be generated if a video is successfully uploaded with a status of <code>LIVE</code>.
-     *
+     * @param  Play[]|null  $playLists  The playlist created for the uploaded video, which provides the streaming video URLs to play the video. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming). The playlist will only be generated if a video is successfully uploaded with a status of <code>LIVE</code>.
      * @return self
      */
     public function setPlayLists($playLists)
@@ -508,8 +498,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets size
      *
-     * @param int|null $size The size, in bytes, of the video content.
-     *
+     * @param  int|null  $size  The size, in bytes, of the video content.
      * @return self
      */
     public function setSize($size)
@@ -535,8 +524,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status The status of the current video resource. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/commerce/media/types/api:VideoStatusEnum'>eBay API documentation</a>
-     *
+     * @param  string|null  $status  The status of the current video resource. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/commerce/media/types/api:VideoStatusEnum'>eBay API documentation</a>
      * @return self
      */
     public function setStatus($status)
@@ -562,8 +550,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets statusMessage
      *
-     * @param string|null $statusMessage The <b>statusMessage</b> field contains additional information on the status. For example, information on why processing might have failed or if the video was blocked.
-     *
+     * @param  string|null  $statusMessage  The <b>statusMessage</b> field contains additional information on the status. For example, information on why processing might have failed or if the video was blocked.
      * @return self
      */
     public function setStatusMessage($statusMessage)
@@ -579,7 +566,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets thumbnail
      *
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\Image|null
+     * @return Image|null
      */
     public function getThumbnail()
     {
@@ -589,8 +576,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets thumbnail
      *
-     * @param \Zislogic\Ebay\Api\Media\Generated\Model\Image|null $thumbnail thumbnail
-     *
+     * @param  Image|null  $thumbnail  thumbnail
      * @return self
      */
     public function setThumbnail($thumbnail)
@@ -616,8 +602,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The title of the video.
-     *
+     * @param  string|null  $title  The title of the video.
      * @return self
      */
     public function setTitle($title)
@@ -643,8 +628,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets videoId
      *
-     * @param string|null $videoId The unique ID of the video.
-     *
+     * @param  string|null  $videoId  The unique ID of the video.
      * @return self
      */
     public function setVideoId($videoId)
@@ -656,12 +640,11 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer|string $offset Offset
-     *
-     * @return boolean
+     * @param  int|string  $offset  Offset
      */
     public function offsetExists(mixed $offset): bool
     {
@@ -671,8 +654,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer|string $offset Offset
-     *
+     * @param  int|string  $offset  Offset
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
@@ -684,10 +666,8 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
-     * @param mixed    $value  Value to be set
-     *
-     * @return void
+     * @param  int|null  $offset  Offset
+     * @param  mixed  $value  Value to be set
      */
     public function offsetSet($offset, $value): void
     {
@@ -701,9 +681,7 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer|string $offset Offset
-     *
-     * @return void
+     * @param  int|string  $offset  Offset
      */
     public function offsetUnset(mixed $offset): void
     {
@@ -712,15 +690,16 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
+     *
      * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     *               of any type other than a resource.
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -746,5 +725,3 @@ class Video implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

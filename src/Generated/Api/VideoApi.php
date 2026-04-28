@@ -1,11 +1,13 @@
 <?php
+
 /**
  * VideoApi
  * PHP version 8.1
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 
@@ -31,23 +33,27 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Zislogic\Ebay\Api\Media\Generated\ApiException;
 use Zislogic\Ebay\Api\Media\Generated\Configuration;
-use Zislogic\Ebay\Api\Media\Generated\FormDataProcessor;
 use Zislogic\Ebay\Api\Media\Generated\HeaderSelector;
+use Zislogic\Ebay\Api\Media\Generated\Model\CreateVideoRequest;
+use Zislogic\Ebay\Api\Media\Generated\Model\Video;
 use Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
 
 /**
  * VideoApi Class Doc Comment
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 class VideoApi
@@ -72,7 +78,7 @@ class VideoApi
      */
     protected $hostIndex;
 
-    /** @var string[] $contentTypes **/
+    /** @var string[] * */
     public const contentTypes = [
         'createVideo' => [
             'application/json',
@@ -86,10 +92,7 @@ class VideoApi
     ];
 
     /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
+     * @param  int  $hostIndex  (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         ?ClientInterface $client = null,
@@ -97,16 +100,16 @@ class VideoApi
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
-        $this->client = $client ?: new Client();
+        $this->client = $client ?: new Client;
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->headerSelector = $selector ?: new HeaderSelector;
         $this->hostIndex = $hostIndex;
     }
 
     /**
      * Set the host index
      *
-     * @param int $hostIndex Host index (required)
+     * @param  int  $hostIndex  Host index (required)
      */
     public function setHostIndex($hostIndex): void
     {
@@ -134,13 +137,13 @@ class VideoApi
     /**
      * Operation createVideo
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateVideoRequest|null $createVideoRequest createVideoRequest (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateVideoRequest|null  $createVideoRequest  createVideoRequest (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
      * @return void
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function createVideo($createVideoRequest = null, string $contentType = self::contentTypes['createVideo'][0])
     {
@@ -150,13 +153,13 @@ class VideoApi
     /**
      * Operation createVideoWithHttpInfo
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateVideoRequest|null $createVideoRequest (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateVideoRequest|null  $createVideoRequest  (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function createVideoWithHttpInfo($createVideoRequest = null, string $contentType = self::contentTypes['createVideo'][0])
     {
@@ -184,12 +187,10 @@ class VideoApi
 
             $statusCode = $response->getStatusCode();
 
-
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
-        
 
             throw $e;
         }
@@ -198,12 +199,12 @@ class VideoApi
     /**
      * Operation createVideoAsync
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateVideoRequest|null $createVideoRequest (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateVideoRequest|null  $createVideoRequest  (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createVideoAsync($createVideoRequest = null, string $contentType = self::contentTypes['createVideo'][0])
     {
@@ -218,12 +219,12 @@ class VideoApi
     /**
      * Operation createVideoAsyncWithHttpInfo
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateVideoRequest|null $createVideoRequest (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateVideoRequest|null  $createVideoRequest  (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createVideoAsyncWithHttpInfo($createVideoRequest = null, string $contentType = self::contentTypes['createVideo'][0])
     {
@@ -233,7 +234,7 @@ class VideoApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
@@ -256,12 +257,12 @@ class VideoApi
     /**
      * Create request for operation 'createVideo'
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateVideoRequest|null $createVideoRequest (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateVideoRequest|null  $createVideoRequest  (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createVideo'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function createVideoRequest($createVideoRequest = null, string $contentType = self::contentTypes['createVideo'][0])
     {
@@ -273,8 +274,6 @@ class VideoApi
             );
         }
 
-
-
         $resourcePath = '/video';
         $formParams = [];
         $queryParams = [];
@@ -282,13 +281,10 @@ class VideoApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($contentType !== null) {
             $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($contentType);
         }
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             [],
@@ -299,8 +295,8 @@ class VideoApi
         // for model (json/xml)
         if (isset($createVideoRequest)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createVideoRequest));
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createVideoRequest));
             } else {
                 $httpBody = $createVideoRequest;
             }
@@ -312,7 +308,7 @@ class VideoApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -320,8 +316,8 @@ class VideoApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -329,8 +325,8 @@ class VideoApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -346,9 +342,10 @@ class VideoApi
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -357,28 +354,29 @@ class VideoApi
     /**
      * Operation getVideo
      *
-     * @param  string $videoId The unique identifier of the video to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
+     * @param  string  $videoId  The unique identifier of the video to be retrieved. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
+     * @return Video
      *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\Video
      */
     public function getVideo($videoId, string $contentType = self::contentTypes['getVideo'][0])
     {
-        list($response) = $this->getVideoWithHttpInfo($videoId, $contentType);
+        [$response] = $this->getVideoWithHttpInfo($videoId, $contentType);
+
         return $response;
     }
 
     /**
      * Operation getVideoWithHttpInfo
      *
-     * @param  string $videoId The unique identifier of the video to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $videoId  The unique identifier of the video to be retrieved. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
      * @return array of \Zislogic\Ebay\Api\Media\Generated\Model\Video, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function getVideoWithHttpInfo($videoId, string $contentType = self::contentTypes['getVideo'][0])
     {
@@ -406,8 +404,7 @@ class VideoApi
 
             $statusCode = $response->getStatusCode();
 
-
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zislogic\Ebay\Api\Media\Generated\Model\Video',
@@ -415,8 +412,6 @@ class VideoApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -447,7 +442,6 @@ class VideoApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -456,11 +450,11 @@ class VideoApi
     /**
      * Operation getVideoAsync
      *
-     * @param  string $videoId The unique identifier of the video to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
+     * @param  string  $videoId  The unique identifier of the video to be retrieved. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getVideoAsync($videoId, string $contentType = self::contentTypes['getVideo'][0])
     {
@@ -475,11 +469,11 @@ class VideoApi
     /**
      * Operation getVideoAsyncWithHttpInfo
      *
-     * @param  string $videoId The unique identifier of the video to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
+     * @param  string  $videoId  The unique identifier of the video to be retrieved. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getVideoAsyncWithHttpInfo($videoId, string $contentType = self::contentTypes['getVideo'][0])
     {
@@ -491,7 +485,7 @@ class VideoApi
             ->then(
                 function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
@@ -502,7 +496,7 @@ class VideoApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -525,11 +519,11 @@ class VideoApi
     /**
      * Create request for operation 'getVideo'
      *
-     * @param  string $videoId The unique identifier of the video to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
+     * @param  string  $videoId  The unique identifier of the video to be retrieved. (required)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getVideo'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function getVideoRequest($videoId, string $contentType = self::contentTypes['getVideo'][0])
     {
@@ -541,7 +535,6 @@ class VideoApi
             );
         }
 
-
         $resourcePath = '/video/{video_id}';
         $formParams = [];
         $queryParams = [];
@@ -549,20 +542,17 @@ class VideoApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($videoId !== null) {
             $resourcePath = str_replace(
-                '{' . 'video_id' . '}',
+                '{'.'video_id'.'}',
                 ObjectSerializer::toPathValue($videoId),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -576,7 +566,7 @@ class VideoApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -584,8 +574,8 @@ class VideoApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -593,8 +583,8 @@ class VideoApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -610,9 +600,10 @@ class VideoApi
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -621,16 +612,16 @@ class VideoApi
     /**
      * Operation uploadVideo
      *
-     * @param  string $contentType Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
-     * @param  string $videoId The unique identifier of the video to be uploaded. (required)
-     * @param  string|null $contentLength Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  string|null $contentRange Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  object|null $body The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $contentType  Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
+     * @param  string  $videoId  The unique identifier of the video to be uploaded. (required)
+     * @param  string|null  $contentLength  Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  string|null  $contentRange  Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  object|null  $body  The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
      * @return void
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function uploadVideo($videoId, $contentLength = null, $contentRange = null, $body = null, string $contentType = self::contentTypes['uploadVideo'][0])
     {
@@ -640,16 +631,16 @@ class VideoApi
     /**
      * Operation uploadVideoWithHttpInfo
      *
-     * @param  string $contentType Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
-     * @param  string $videoId The unique identifier of the video to be uploaded. (required)
-     * @param  string|null $contentLength Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  string|null $contentRange Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  object|null $body The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $contentType  Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
+     * @param  string  $videoId  The unique identifier of the video to be uploaded. (required)
+     * @param  string|null  $contentLength  Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  string|null  $contentRange  Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  object|null  $body  The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function uploadVideoWithHttpInfo($videoId, $contentLength = null, $contentRange = null, $body = null, string $contentType = self::contentTypes['uploadVideo'][0])
     {
@@ -677,12 +668,10 @@ class VideoApi
 
             $statusCode = $response->getStatusCode();
 
-
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
-        
 
             throw $e;
         }
@@ -691,15 +680,15 @@ class VideoApi
     /**
      * Operation uploadVideoAsync
      *
-     * @param  string $contentType Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
-     * @param  string $videoId The unique identifier of the video to be uploaded. (required)
-     * @param  string|null $contentLength Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  string|null $contentRange Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  object|null $body The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
+     * @param  string  $contentType  Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
+     * @param  string  $videoId  The unique identifier of the video to be uploaded. (required)
+     * @param  string|null  $contentLength  Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  string|null  $contentRange  Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  object|null  $body  The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function uploadVideoAsync($videoId, $contentLength = null, $contentRange = null, $body = null, string $contentType = self::contentTypes['uploadVideo'][0])
     {
@@ -714,15 +703,15 @@ class VideoApi
     /**
      * Operation uploadVideoAsyncWithHttpInfo
      *
-     * @param  string $contentType Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
-     * @param  string $videoId The unique identifier of the video to be uploaded. (required)
-     * @param  string|null $contentLength Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  string|null $contentRange Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  object|null $body The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
+     * @param  string  $contentType  Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
+     * @param  string  $videoId  The unique identifier of the video to be uploaded. (required)
+     * @param  string|null  $contentLength  Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  string|null  $contentRange  Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  object|null  $body  The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function uploadVideoAsyncWithHttpInfo($videoId, $contentLength = null, $contentRange = null, $body = null, string $contentType = self::contentTypes['uploadVideo'][0])
     {
@@ -732,7 +721,7 @@ class VideoApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
@@ -755,15 +744,15 @@ class VideoApi
     /**
      * Create request for operation 'uploadVideo'
      *
-     * @param  string $contentType Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
-     * @param  string $videoId The unique identifier of the video to be uploaded. (required)
-     * @param  string|null $contentLength Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  string|null $contentRange Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
-     * @param  object|null $body The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
+     * @param  string  $contentType  Use this header to specify the content type for the upload. The Content-Type should be set to &lt;code&gt;application/octet-stream&lt;/code&gt;. (required)
+     * @param  string  $videoId  The unique identifier of the video to be uploaded. (required)
+     * @param  string|null  $contentLength  Use this header to specify the content length for the upload. Use Content-Range: bytes {1}-{2}/{3} and Content-Length:{4} headers.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  string|null  $contentRange  Use this header to specify the content range for the upload. The Content-Range should be of the following bytes ((?:[0-9]+-[0-9]+)|\\\\\\\\*)/([0-9]+|\\\\\\\\*) pattern.&lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;span style&#x3D;\&quot;color:#004680\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; This header is optional and is only required for &lt;i&gt;resumable&lt;/i&gt; uploads (when an upload is interrupted and must be resumed from a certain point).&lt;/span&gt; (optional)
+     * @param  object|null  $body  The request payload for this method is the input stream for the video source. The input source must be an .mp4 file of the type MPEG-4 Part 10 or Advanced Video Coding (MPEG-4 AVC). (optional)
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadVideo'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function uploadVideoRequest($videoId, $contentLength = null, $contentRange = null, $body = null, string $contentType = self::contentTypes['uploadVideo'][0])
     {
@@ -782,17 +771,12 @@ class VideoApi
             );
         }
 
-
-
-
-
         $resourcePath = '/video/{video_id}/upload';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($contentLength !== null) {
@@ -810,12 +794,11 @@ class VideoApi
         // path params
         if ($videoId !== null) {
             $resourcePath = str_replace(
-                '{' . 'video_id' . '}',
+                '{'.'video_id'.'}',
                 ObjectSerializer::toPathValue($videoId),
                 $resourcePath
             );
         }
-
 
         $headers = $this->headerSelector->selectHeaders(
             [],
@@ -826,8 +809,8 @@ class VideoApi
         // for model (json/xml)
         if (isset($body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
             }
@@ -839,7 +822,7 @@ class VideoApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -847,8 +830,8 @@ class VideoApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -856,8 +839,8 @@ class VideoApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -873,9 +856,10 @@ class VideoApi
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -884,16 +868,17 @@ class VideoApi
     /**
      * Create http client option
      *
-     * @throws \RuntimeException on file opening failure
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
@@ -914,7 +899,7 @@ class VideoApi
         ResponseInterface $response
     ): array {
         if ($dataType === '\SplFileObject') {
-            $content = $response->getBody(); //stream goes to serializer
+            $content = $response->getBody(); // stream goes to serializer
         } else {
             $content = (string) $response->getBody();
             if ($dataType !== 'string') {
@@ -937,7 +922,7 @@ class VideoApi
         return [
             ObjectSerializer::deserialize($content, $dataType, []),
             $response->getStatusCode(),
-            $response->getHeaders()
+            $response->getHeaders(),
         ];
     }
 

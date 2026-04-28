@@ -1,12 +1,14 @@
 <?php
+
 /**
  * CreateDocumentFromUrlRequest
  *
  * PHP version 8.1
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 
@@ -28,70 +30,75 @@
 
 namespace Zislogic\Ebay\Api\Media\Generated\Model;
 
-use \ArrayAccess;
-use \Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
+use ArrayAccess;
+use Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
 
 /**
  * CreateDocumentFromUrlRequest Class Doc Comment
  *
  * @category Class
+ *
  * @description This type contains the metadata used to create the document ID when creating a document using a URL.
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
- * @implements \ArrayAccess<string, mixed>
+ *
+ * @implements ArrayAccess<string, mixed>
  */
-class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateDocumentFromUrlRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'CreateDocumentFromUrlRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'documentType' => 'string',
         'documentUrl' => 'string',
-        'languages' => 'string[]'
+        'languages' => 'string[]',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'documentType' => null,
         'documentUrl' => null,
-        'languages' => null
+        'languages' => null,
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'documentType' => false,
         'documentUrl' => false,
-        'languages' => false
+        'languages' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -116,8 +123,6 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
 
     /**
      * Array of nullable properties
-     *
-     * @return array
      */
     protected static function openAPINullables(): array
     {
@@ -127,7 +132,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Array of nullable field names deliberately set to null
      *
-     * @return boolean[]
+     * @return bool[]
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -137,7 +142,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Setter - Array of nullable field names deliberately set to null
      *
-     * @param boolean[] $openAPINullablesSetToNull
+     * @param  bool[]  $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
@@ -146,9 +151,6 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
 
     /**
      * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
      */
     public static function isNullable(string $property): bool
     {
@@ -157,9 +159,6 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
 
     /**
      * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
      */
     public function isNullableSetToNull(string $property): bool
     {
@@ -175,7 +174,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     protected static $attributeMap = [
         'documentType' => 'documentType',
         'documentUrl' => 'documentUrl',
-        'languages' => 'languages'
+        'languages' => 'languages',
     ];
 
     /**
@@ -186,7 +185,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     protected static $setters = [
         'documentType' => 'setDocumentType',
         'documentUrl' => 'setDocumentUrl',
-        'languages' => 'setLanguages'
+        'languages' => 'setLanguages',
     ];
 
     /**
@@ -197,7 +196,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     protected static $getters = [
         'documentType' => 'getDocumentType',
         'documentUrl' => 'getDocumentUrl',
-        'languages' => 'getLanguages'
+        'languages' => 'getLanguages',
     ];
 
     /**
@@ -241,7 +240,6 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -252,8 +250,8 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Constructor
      *
-     * @param mixed[]|null $data Associated array of property values
-     *                      initializing the model
+     * @param  mixed[]|null  $data  Associated array of property values
+     *                              initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -263,14 +261,12 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param  mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -303,7 +299,6 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
      * Gets documentType
      *
@@ -317,8 +312,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets documentType
      *
-     * @param string|null $documentType The type of the document being created. For example, a <code>USER_GUIDE_OR_MANUAL</code> or a <code>SAFETY_DATA_SHEET</code>. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum'>eBay API documentation</a>
-     *
+     * @param  string|null  $documentType  The type of the document being created. For example, a <code>USER_GUIDE_OR_MANUAL</code> or a <code>SAFETY_DATA_SHEET</code>. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum'>eBay API documentation</a>
      * @return self
      */
     public function setDocumentType($documentType)
@@ -344,8 +338,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets documentUrl
      *
-     * @param string|null $documentUrl The URL of the document being created.<br><br>The document referenced by the URL must be a .pdf, .png, .jpg, or .jpeg file, and must be no larger than 10 MB.
-     *
+     * @param  string|null  $documentUrl  The URL of the document being created.<br><br>The document referenced by the URL must be a .pdf, .png, .jpg, or .jpeg file, and must be no larger than 10 MB.
      * @return self
      */
     public function setDocumentUrl($documentUrl)
@@ -371,8 +364,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets languages
      *
-     * @param string[]|null $languages This array shows the language(s) used in the document.
-     *
+     * @param  string[]|null  $languages  This array shows the language(s) used in the document.
      * @return self
      */
     public function setLanguages($languages)
@@ -384,12 +376,11 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer|string $offset Offset
-     *
-     * @return boolean
+     * @param  int|string  $offset  Offset
      */
     public function offsetExists(mixed $offset): bool
     {
@@ -399,8 +390,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets offset.
      *
-     * @param integer|string $offset Offset
-     *
+     * @param  int|string  $offset  Offset
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
@@ -412,10 +402,8 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
-     * @param mixed    $value  Value to be set
-     *
-     * @return void
+     * @param  int|null  $offset  Offset
+     * @param  mixed  $value  Value to be set
      */
     public function offsetSet($offset, $value): void
     {
@@ -429,9 +417,7 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Unsets offset.
      *
-     * @param integer|string $offset Offset
-     *
-     * @return void
+     * @param  int|string  $offset  Offset
      */
     public function offsetUnset(mixed $offset): void
     {
@@ -440,15 +426,16 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
+     *
      * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     *               of any type other than a resource.
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -474,5 +461,3 @@ class CreateDocumentFromUrlRequest implements ModelInterface, ArrayAccess, \Json
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

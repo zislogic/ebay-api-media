@@ -17,6 +17,7 @@ use Zislogic\Ebay\Connector\Services\EbayHttpClient;
 final class EbayMediaClient
 {
     private readonly Configuration $configuration;
+
     private readonly Client $guzzleClient;
 
     public function __construct(
@@ -25,8 +26,8 @@ final class EbayMediaClient
         bool $verifySsl = true,
         ?string $proxy = null,
     ) {
-        $this->configuration = new Configuration();
-        $this->configuration->setHost($apimBaseUrl . '/commerce/media/v1_beta');
+        $this->configuration = new Configuration;
+        $this->configuration->setHost($apimBaseUrl.'/commerce/media/v1_beta');
 
         $guzzleOptions = ['verify' => $verifySsl];
         if ($proxy !== null) {
@@ -74,16 +75,16 @@ final class EbayMediaClient
      */
     public function uploadImageFromFile(int $credentialId, string $filePath): ImageResponse
     {
-        if (!file_exists($filePath)) {
+        if (! file_exists($filePath)) {
             throw EbayMediaException::fileNotFound($filePath);
         }
 
         $token = $this->httpClient->getSellerAccessToken($credentialId);
-        $url = $this->configuration->getHost() . '/image/create_image_from_file';
+        $url = $this->configuration->getHost().'/image/create_image_from_file';
 
         $response = $this->guzzleClient->post($url, [
             'headers' => [
-                'Authorization' => 'Bearer ' . $token,
+                'Authorization' => 'Bearer '.$token,
                 'Accept' => 'application/json',
             ],
             'multipart' => [
@@ -107,7 +108,7 @@ final class EbayMediaClient
         /** @var array<string, mixed> $data */
         $data = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
 
-        $imageResponse = new ImageResponse();
+        $imageResponse = new ImageResponse;
 
         /** @var string|null $imageUrl */
         $imageUrl = $data['imageUrl'] ?? null;

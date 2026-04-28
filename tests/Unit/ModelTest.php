@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Zislogic\Ebay\Api\Media\Tests\Unit;
 
+use Illuminate\Support\Carbon;
 use PHPUnit\Framework\Attributes\Test;
 use Zislogic\Ebay\Api\Media\Models\EbayMediaImage;
 use Zislogic\Ebay\Api\Media\Tests\TestCase;
@@ -30,7 +31,7 @@ final class ModelTest extends TestCase
         ]);
 
         $this->assertEquals('https://i.ebayimg.com/images/test.jpg', $image->image_url);
-        $this->assertInstanceOf(\Illuminate\Support\Carbon::class, $image->expiration_date);
+        $this->assertInstanceOf(Carbon::class, $image->expiration_date);
     }
 
     #[Test]

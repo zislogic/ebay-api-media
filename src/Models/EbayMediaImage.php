@@ -6,6 +6,7 @@ namespace Zislogic\Ebay\Api\Media\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -16,9 +17,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $original_filename
  * @property string $source_type
  * @property string $source_path
- * @property \Illuminate\Support\Carbon|null $expiration_date
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $expiration_date
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  */
 final class EbayMediaImage extends Model
 {
@@ -46,7 +47,7 @@ final class EbayMediaImage extends Model
     }
 
     /**
-     * @param Builder<self> $query
+     * @param  Builder<self>  $query
      * @return Builder<self>
      */
     public function scopeForCredential(Builder $query, int $credentialId): Builder

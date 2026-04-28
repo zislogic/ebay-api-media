@@ -1,11 +1,13 @@
 <?php
+
 /**
  * FormDataProcessor
  * PHP version 7.4
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 
@@ -38,8 +40,9 @@ use Zislogic\Ebay\Api\Media\Generated\Model\ModelInterface;
  * FormDataProcessor Class Doc Comment
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 class FormDataProcessor
@@ -55,8 +58,7 @@ class FormDataProcessor
      * the http body (form parameter). If it's a string, pass through unchanged
      * If it's a datetime object, format it in ISO8601
      *
-     * @param array<string|bool|array|DateTime|ArrayAccess|SplFileObject> $values the value of the form parameter
-     *
+     * @param  array<string|bool|array|DateTime|ArrayAccess|SplFileObject>  $values  the value of the form parameter
      * @return array [key => value] of formdata
      */
     public function prepare(array $values): array
@@ -85,25 +87,25 @@ class FormDataProcessor
     public static function flatten(array $source, string $start = ''): array
     {
         $opt = [
-            'prefix'          => '[',
-            'suffix'          => ']',
-            'suffix-end'      => true,
-            'prefix-list'     => '[',
-            'suffix-list'     => ']',
+            'prefix' => '[',
+            'suffix' => ']',
+            'suffix-end' => true,
+            'prefix-list' => '[',
+            'suffix-list' => ']',
             'suffix-list-end' => true,
         ];
 
         if ($start === '') {
-            $currentPrefix    = '';
-            $currentSuffix    = '';
+            $currentPrefix = '';
+            $currentSuffix = '';
             $currentSuffixEnd = false;
         } elseif (array_is_list($source)) {
-            $currentPrefix    = $opt['prefix-list'];
-            $currentSuffix    = $opt['suffix-list'];
+            $currentPrefix = $opt['prefix-list'];
+            $currentSuffix = $opt['suffix-list'];
             $currentSuffixEnd = $opt['suffix-list-end'];
         } else {
-            $currentPrefix    = $opt['prefix'];
-            $currentSuffix    = $opt['suffix'];
+            $currentPrefix = $opt['prefix'];
+            $currentSuffix = $opt['suffix'];
             $currentSuffixEnd = $opt['suffix-end'];
         }
 
@@ -113,7 +115,7 @@ class FormDataProcessor
         foreach ($source as $key => $val) {
             $currentName .= $currentPrefix.$key;
 
-            if (is_array($val) && !empty($val)) {
+            if (is_array($val) && ! empty($val)) {
                 $currentName .= $currentSuffix;
                 $result += self::flatten($val, $currentName);
             } else {
@@ -155,7 +157,7 @@ class FormDataProcessor
             return $this->processModel($value);
         }
 
-        if (is_array($value) || (is_object($value) && !$value instanceof \DateTimeInterface)) {
+        if (is_array($value) || (is_object($value) && ! $value instanceof \DateTimeInterface)) {
             $data = [];
 
             foreach ($value as $k => $v) {

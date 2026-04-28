@@ -7,6 +7,7 @@ namespace Zislogic\Ebay\Api\Media\Commands;
 use Illuminate\Console\Command;
 use Zislogic\Ebay\Api\Media\EbayMediaClient;
 use Zislogic\Ebay\Api\Media\Generated\Model\CreateImageFromUrlRequest;
+use Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse;
 use Zislogic\Ebay\Api\Media\Models\EbayMediaImage;
 use Zislogic\Ebay\Connector\Concerns\HandlesEbayApiErrors;
 
@@ -30,12 +31,12 @@ final class UploadImageFromUrlCommand extends Command
         /** @var string $url */
         $url = $this->argument('url');
 
-        $this->info("Uploading image from URL to EPS...");
+        $this->info('Uploading image from URL to EPS...');
 
-        $request = new CreateImageFromUrlRequest();
+        $request = new CreateImageFromUrlRequest;
         $request->setImageUrl($url);
 
-        /** @var \Zislogic\Ebay\Api\Media\Generated\Model\ImageResponse $response */
+        /** @var ImageResponse $response */
         $response = $this->callWithRetry(
             fn () => $client->image($credentialId)->createImageFromUrl($request),
         );
@@ -54,7 +55,7 @@ final class UploadImageFromUrlCommand extends Command
             'expiration_date' => $expiration,
         ]);
 
-        $this->info("Image uploaded successfully.");
+        $this->info('Image uploaded successfully.');
         $this->line("  URL: {$imageUrl}");
 
         if ($maxUrl !== null) {

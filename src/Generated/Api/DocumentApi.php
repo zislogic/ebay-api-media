@@ -1,11 +1,13 @@
 <?php
+
 /**
  * DocumentApi
  * PHP version 8.1
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 
@@ -31,23 +33,29 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Zislogic\Ebay\Api\Media\Generated\ApiException;
 use Zislogic\Ebay\Api\Media\Generated\Configuration;
-use Zislogic\Ebay\Api\Media\Generated\FormDataProcessor;
 use Zislogic\Ebay\Api\Media\Generated\HeaderSelector;
+use Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentFromUrlRequest;
+use Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentRequest;
+use Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentResponse;
+use Zislogic\Ebay\Api\Media\Generated\Model\DocumentResponse;
 use Zislogic\Ebay\Api\Media\Generated\ObjectSerializer;
 
 /**
  * DocumentApi Class Doc Comment
  *
  * @category Class
- * @package  Zislogic\Ebay\Api\Media\Generated
+ *
  * @author   OpenAPI Generator team
+ *
  * @link     https://openapi-generator.tech
  */
 class DocumentApi
@@ -72,7 +80,7 @@ class DocumentApi
      */
     protected $hostIndex;
 
-    /** @var string[] $contentTypes **/
+    /** @var string[] * */
     public const contentTypes = [
         'createDocument' => [
             'application/json',
@@ -89,10 +97,7 @@ class DocumentApi
     ];
 
     /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
+     * @param  int  $hostIndex  (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         ?ClientInterface $client = null,
@@ -100,16 +105,16 @@ class DocumentApi
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
-        $this->client = $client ?: new Client();
+        $this->client = $client ?: new Client;
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->headerSelector = $selector ?: new HeaderSelector;
         $this->hostIndex = $hostIndex;
     }
 
     /**
      * Set the host index
      *
-     * @param int $hostIndex Host index (required)
+     * @param  int  $hostIndex  Host index (required)
      */
     public function setHostIndex($hostIndex): void
     {
@@ -143,19 +148,20 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentRequest|null $createDocumentRequest createDocumentRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentRequest|null  $createDocumentRequest  createDocumentRequest (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
+     * @return CreateDocumentResponse
      *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentResponse
      */
     public function createDocument($createDocumentRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocument'][0])
     {
-        list($response) = $this->createDocumentWithHttpInfo($createDocumentRequest, $hostIndex, $variables, $contentType);
+        [$response] = $this->createDocumentWithHttpInfo($createDocumentRequest, $hostIndex, $variables, $contentType);
+
         return $response;
     }
 
@@ -168,15 +174,15 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentRequest|null $createDocumentRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentRequest|null  $createDocumentRequest  (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
      * @return array of \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function createDocumentWithHttpInfo($createDocumentRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocument'][0])
     {
@@ -204,8 +210,7 @@ class DocumentApi
 
             $statusCode = $response->getStatusCode();
 
-
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentResponse',
@@ -213,8 +218,6 @@ class DocumentApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -245,7 +248,6 @@ class DocumentApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -260,14 +262,14 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentRequest|null $createDocumentRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentRequest|null  $createDocumentRequest  (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createDocumentAsync($createDocumentRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocument'][0])
     {
@@ -288,14 +290,14 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentRequest|null $createDocumentRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentRequest|null  $createDocumentRequest  (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createDocumentAsyncWithHttpInfo($createDocumentRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocument'][0])
     {
@@ -307,7 +309,7 @@ class DocumentApi
             ->then(
                 function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
@@ -318,7 +320,7 @@ class DocumentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -341,20 +343,20 @@ class DocumentApi
     /**
      * Create request for operation 'createDocument'
      *
-    * This operation contains host(s) defined in the OpenAPI spec. Use 'hostIndex' to select the host.
-    * if needed, use the 'variables' parameter to pass variables to the host.
+     * This operation contains host(s) defined in the OpenAPI spec. Use 'hostIndex' to select the host.
+     * if needed, use the 'variables' parameter to pass variables to the host.
      * URL: https://api.ebay.com{basePath}
      *  Variables:
-    *    - basePath:  No description provided
+     *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentRequest|null $createDocumentRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentRequest|null  $createDocumentRequest  (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocument'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function createDocumentRequest($createDocumentRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocument'][0])
     {
@@ -366,8 +368,6 @@ class DocumentApi
             );
         }
 
-
-
         $resourcePath = '/document';
         $formParams = [];
         $queryParams = [];
@@ -375,16 +375,13 @@ class DocumentApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($contentType !== null) {
             $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
-
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -392,8 +389,8 @@ class DocumentApi
         // for model (json/xml)
         if (isset($createDocumentRequest)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createDocumentRequest));
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createDocumentRequest));
             } else {
                 $httpBody = $createDocumentRequest;
             }
@@ -405,7 +402,7 @@ class DocumentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -413,8 +410,8 @@ class DocumentApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -422,8 +419,8 @@ class DocumentApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -437,7 +434,7 @@ class DocumentApi
             $headers
         );
 
-        # Preserve the original behavior of server indexing.
+        // Preserve the original behavior of server indexing.
         if ($hostIndex === null) {
             $hostIndex = $this->hostIndex;
         }
@@ -449,9 +446,10 @@ class DocumentApi
         }
         $operationHost = Configuration::getHostString($hostSettings, $hostIndex, $variables);
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -466,15 +464,15 @@ class DocumentApi
     {
         return [
             [
-                "url" => "https://api.ebay.com{basePath}",
-                "description" => "Production",
-                "variables" => [
-                    "basePath" => [
-                    "description" => "No description provided",
-                    "default_value" => "/commerce/media/v1_beta",
-                    ]
-                ]
-            ]
+                'url' => 'https://api.ebay.com{basePath}',
+                'description' => 'Production',
+                'variables' => [
+                    'basePath' => [
+                        'description' => 'No description provided',
+                        'default_value' => '/commerce/media/v1_beta',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -487,19 +485,20 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentFromUrlRequest|null $createDocumentFromUrlRequest createDocumentFromUrlRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentFromUrlRequest|null  $createDocumentFromUrlRequest  createDocumentFromUrlRequest (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
+     * @return CreateDocumentResponse
      *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentResponse
      */
     public function createDocumentFromUrl($createDocumentFromUrlRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocumentFromUrl'][0])
     {
-        list($response) = $this->createDocumentFromUrlWithHttpInfo($createDocumentFromUrlRequest, $hostIndex, $variables, $contentType);
+        [$response] = $this->createDocumentFromUrlWithHttpInfo($createDocumentFromUrlRequest, $hostIndex, $variables, $contentType);
+
         return $response;
     }
 
@@ -512,15 +511,15 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentFromUrlRequest|null $createDocumentFromUrlRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentFromUrlRequest|null  $createDocumentFromUrlRequest  (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
      * @return array of \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function createDocumentFromUrlWithHttpInfo($createDocumentFromUrlRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocumentFromUrl'][0])
     {
@@ -548,8 +547,7 @@ class DocumentApi
 
             $statusCode = $response->getStatusCode();
 
-
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentResponse',
@@ -557,8 +555,6 @@ class DocumentApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -589,7 +585,6 @@ class DocumentApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -604,14 +599,14 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentFromUrlRequest|null $createDocumentFromUrlRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentFromUrlRequest|null  $createDocumentFromUrlRequest  (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createDocumentFromUrlAsync($createDocumentFromUrlRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocumentFromUrl'][0])
     {
@@ -632,14 +627,14 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentFromUrlRequest|null $createDocumentFromUrlRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentFromUrlRequest|null  $createDocumentFromUrlRequest  (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createDocumentFromUrlAsyncWithHttpInfo($createDocumentFromUrlRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocumentFromUrl'][0])
     {
@@ -651,7 +646,7 @@ class DocumentApi
             ->then(
                 function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
@@ -662,7 +657,7 @@ class DocumentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -685,20 +680,20 @@ class DocumentApi
     /**
      * Create request for operation 'createDocumentFromUrl'
      *
-    * This operation contains host(s) defined in the OpenAPI spec. Use 'hostIndex' to select the host.
-    * if needed, use the 'variables' parameter to pass variables to the host.
+     * This operation contains host(s) defined in the OpenAPI spec. Use 'hostIndex' to select the host.
+     * if needed, use the 'variables' parameter to pass variables to the host.
      * URL: https://api.ebay.com{basePath}
      *  Variables:
-    *    - basePath:  No description provided
+     *    - basePath:  No description provided
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \Zislogic\Ebay\Api\Media\Generated\Model\CreateDocumentFromUrlRequest|null $createDocumentFromUrlRequest (optional)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  CreateDocumentFromUrlRequest|null  $createDocumentFromUrlRequest  (optional)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['createDocumentFromUrl'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function createDocumentFromUrlRequest($createDocumentFromUrlRequest = null, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['createDocumentFromUrl'][0])
     {
@@ -710,8 +705,6 @@ class DocumentApi
             );
         }
 
-
-
         $resourcePath = '/document/create_document_from_url';
         $formParams = [];
         $queryParams = [];
@@ -719,16 +712,13 @@ class DocumentApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($contentType !== null) {
             $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
-
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -736,8 +726,8 @@ class DocumentApi
         // for model (json/xml)
         if (isset($createDocumentFromUrlRequest)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createDocumentFromUrlRequest));
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createDocumentFromUrlRequest));
             } else {
                 $httpBody = $createDocumentFromUrlRequest;
             }
@@ -749,7 +739,7 @@ class DocumentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -757,8 +747,8 @@ class DocumentApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -766,8 +756,8 @@ class DocumentApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -781,7 +771,7 @@ class DocumentApi
             $headers
         );
 
-        # Preserve the original behavior of server indexing.
+        // Preserve the original behavior of server indexing.
         if ($hostIndex === null) {
             $hostIndex = $this->hostIndex;
         }
@@ -793,9 +783,10 @@ class DocumentApi
         }
         $operationHost = Configuration::getHostString($hostSettings, $hostIndex, $variables);
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -810,15 +801,15 @@ class DocumentApi
     {
         return [
             [
-                "url" => "https://api.ebay.com{basePath}",
-                "description" => "Production",
-                "variables" => [
-                    "basePath" => [
-                    "description" => "No description provided",
-                    "default_value" => "/commerce/media/v1_beta",
-                    ]
-                ]
-            ]
+                'url' => 'https://api.ebay.com{basePath}',
+                'description' => 'Production',
+                'variables' => [
+                    'basePath' => [
+                        'description' => 'No description provided',
+                        'default_value' => '/commerce/media/v1_beta',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -831,18 +822,19 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
+     * @param  string  $documentId  The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
+     * @return DocumentResponse
      *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\DocumentResponse
      */
     public function getDocument($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['getDocument'][0])
     {
-        list($response) = $this->getDocumentWithHttpInfo($documentId, $hostIndex, $variables, $contentType);
+        [$response] = $this->getDocumentWithHttpInfo($documentId, $hostIndex, $variables, $contentType);
+
         return $response;
     }
 
@@ -855,14 +847,14 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $documentId  The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
      * @return array of \Zislogic\Ebay\Api\Media\Generated\Model\DocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
     public function getDocumentWithHttpInfo($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['getDocument'][0])
     {
@@ -890,8 +882,7 @@ class DocumentApi
 
             $statusCode = $response->getStatusCode();
 
-
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zislogic\Ebay\Api\Media\Generated\Model\DocumentResponse',
@@ -899,8 +890,6 @@ class DocumentApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -931,7 +920,6 @@ class DocumentApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -946,13 +934,13 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
+     * @param  string  $documentId  The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getDocumentAsync($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['getDocument'][0])
     {
@@ -973,13 +961,13 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
+     * @param  string  $documentId  The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getDocumentAsyncWithHttpInfo($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['getDocument'][0])
     {
@@ -991,7 +979,7 @@ class DocumentApi
             ->then(
                 function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
@@ -1002,7 +990,7 @@ class DocumentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1025,19 +1013,19 @@ class DocumentApi
     /**
      * Create request for operation 'getDocument'
      *
-    * This operation contains host(s) defined in the OpenAPI spec. Use 'hostIndex' to select the host.
-    * if needed, use the 'variables' parameter to pass variables to the host.
+     * This operation contains host(s) defined in the OpenAPI spec. Use 'hostIndex' to select the host.
+     * if needed, use the 'variables' parameter to pass variables to the host.
      * URL: https://api.ebay.com{basePath}
      *  Variables:
-    *    - basePath:  No description provided
+     *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
+     * @param  string  $documentId  The unique identifier of the document for which status and metadata is being retrieved.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['getDocument'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
     public function getDocumentRequest($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['getDocument'][0])
     {
@@ -1049,7 +1037,6 @@ class DocumentApi
             );
         }
 
-
         $resourcePath = '/document/{document_id}';
         $formParams = [];
         $queryParams = [];
@@ -1057,20 +1044,17 @@ class DocumentApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($documentId !== null) {
             $resourcePath = str_replace(
-                '{' . 'document_id' . '}',
+                '{'.'document_id'.'}',
                 ObjectSerializer::toPathValue($documentId),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -1084,7 +1068,7 @@ class DocumentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -1092,8 +1076,8 @@ class DocumentApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1101,8 +1085,8 @@ class DocumentApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -1116,7 +1100,7 @@ class DocumentApi
             $headers
         );
 
-        # Preserve the original behavior of server indexing.
+        // Preserve the original behavior of server indexing.
         if ($hostIndex === null) {
             $hostIndex = $this->hostIndex;
         }
@@ -1128,9 +1112,10 @@ class DocumentApi
         }
         $operationHost = Configuration::getHostString($hostSettings, $hostIndex, $variables);
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1145,15 +1130,15 @@ class DocumentApi
     {
         return [
             [
-                "url" => "https://api.ebay.com{basePath}",
-                "description" => "Production",
-                "variables" => [
-                    "basePath" => [
-                    "description" => "No description provided",
-                    "default_value" => "/commerce/media/v1_beta",
-                    ]
-                ]
-            ]
+                'url' => 'https://api.ebay.com{basePath}',
+                'description' => 'Production',
+                'variables' => [
+                    'basePath' => [
+                        'description' => 'No description provided',
+                        'default_value' => '/commerce/media/v1_beta',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -1166,19 +1151,20 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
+     * @param  string  $documentId  The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
+     * @return DocumentResponse
      *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zislogic\Ebay\Api\Media\Generated\Model\DocumentResponse
      */
-    public function uploadDocument($documentId , ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
+    public function uploadDocument($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
     {
-        list($response) = $this->uploadDocumentWithHttpInfo($documentId , $hostIndex, $variables, $contentType);
+        [$response] = $this->uploadDocumentWithHttpInfo($documentId, $hostIndex, $variables, $contentType);
+
         return $response;
     }
 
@@ -1191,19 +1177,19 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
-     *
-     * @throws \Zislogic\Ebay\Api\Media\Generated\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
+     * @param  string  $documentId  The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
      * @return array of \Zislogic\Ebay\Api\Media\Generated\Model\DocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
      */
-    public function uploadDocumentWithHttpInfo($documentId , ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
+    public function uploadDocumentWithHttpInfo($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
     {
-        $request = $this->uploadDocumentRequest($documentId , $hostIndex, $variables, $contentType);
+        $request = $this->uploadDocumentRequest($documentId, $hostIndex, $variables, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1227,8 +1213,7 @@ class DocumentApi
 
             $statusCode = $response->getStatusCode();
 
-
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zislogic\Ebay\Api\Media\Generated\Model\DocumentResponse',
@@ -1236,8 +1221,6 @@ class DocumentApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1268,7 +1251,6 @@ class DocumentApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -1283,18 +1265,18 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
+     * @param  string  $documentId  The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadDocumentAsync($documentId , ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
+    public function uploadDocumentAsync($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
     {
-        return $this->uploadDocumentAsyncWithHttpInfo($documentId , $hostIndex, $variables, $contentType)
+        return $this->uploadDocumentAsyncWithHttpInfo($documentId, $hostIndex, $variables, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1311,26 +1293,26 @@ class DocumentApi
      *  Variables:
      *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
+     * @param  string  $documentId  The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
+     * @return PromiseInterface
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadDocumentAsyncWithHttpInfo($documentId , ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
+    public function uploadDocumentAsyncWithHttpInfo($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
     {
         $returnType = '\Zislogic\Ebay\Api\Media\Generated\Model\DocumentResponse';
-        $request = $this->uploadDocumentRequest($documentId , $hostIndex, $variables, $contentType);
+        $request = $this->uploadDocumentRequest($documentId, $hostIndex, $variables, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
@@ -1341,7 +1323,7 @@ class DocumentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1364,22 +1346,22 @@ class DocumentApi
     /**
      * Create request for operation 'uploadDocument'
      *
-    * This operation contains host(s) defined in the OpenAPI spec. Use 'hostIndex' to select the host.
-    * if needed, use the 'variables' parameter to pass variables to the host.
+     * This operation contains host(s) defined in the OpenAPI spec. Use 'hostIndex' to select the host.
+     * if needed, use the 'variables' parameter to pass variables to the host.
      * URL: https://api.ebay.com{basePath}
      *  Variables:
-    *    - basePath:  No description provided
+     *    - basePath:  No description provided
      *
-     * @param  string $documentId The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  null|int $hostIndex Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
-     * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
+     * @param  string  $documentId  The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response of the &lt;a href&#x3D;\&quot;/api-docs/commerce/media/resources/document/methods/createDocument\&quot; target&#x3D;\&quot;_blank\&quot;&gt;createDocument&lt;/a&gt; method. (required)
+     * @param  string  $contentType  This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  null|int  $hostIndex  Host index. Defaults to null. If null, then the library will use $this->hostIndex instead
+     * @param  array  $variables  Associative array of variables to pass to the host. Defaults to empty array.
+     * @param  string  $contentType  The value for the Content-Type header. Check self::contentTypes['uploadDocument'] to see the possible values for this operation
+     * @return Request
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function uploadDocumentRequest($documentId , ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
+    public function uploadDocumentRequest($documentId, ?int $hostIndex = null, array $variables = [], string $contentType = self::contentTypes['uploadDocument'][0])
     {
 
         // verify the required parameter 'documentId' is set
@@ -1396,14 +1378,12 @@ class DocumentApi
             );
         }
 
-
         $resourcePath = '/document/{document_id}/upload';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($contentType !== null) {
@@ -1413,15 +1393,14 @@ class DocumentApi
         // path params
         if ($documentId !== null) {
             $resourcePath = str_replace(
-                '{' . 'document_id' . '}',
+                '{'.'document_id'.'}',
                 ObjectSerializer::toPathValue($documentId),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -1435,7 +1414,7 @@ class DocumentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -1443,8 +1422,8 @@ class DocumentApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1452,8 +1431,8 @@ class DocumentApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        if (! empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -1467,7 +1446,7 @@ class DocumentApi
             $headers
         );
 
-        # Preserve the original behavior of server indexing.
+        // Preserve the original behavior of server indexing.
         if ($hostIndex === null) {
             $hostIndex = $this->hostIndex;
         }
@@ -1479,9 +1458,10 @@ class DocumentApi
         }
         $operationHost = Configuration::getHostString($hostSettings, $hostIndex, $variables);
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1496,31 +1476,32 @@ class DocumentApi
     {
         return [
             [
-                "url" => "https://api.ebay.com{basePath}",
-                "description" => "Production",
-                "variables" => [
-                    "basePath" => [
-                    "description" => "No description provided",
-                    "default_value" => "/commerce/media/v1_beta",
-                    ]
-                ]
-            ]
+                'url' => 'https://api.ebay.com{basePath}',
+                'description' => 'Production',
+                'variables' => [
+                    'basePath' => [
+                        'description' => 'No description provided',
+                        'default_value' => '/commerce/media/v1_beta',
+                    ],
+                ],
+            ],
         ];
     }
 
     /**
      * Create http client option
      *
-     * @throws \RuntimeException on file opening failure
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
@@ -1541,7 +1522,7 @@ class DocumentApi
         ResponseInterface $response
     ): array {
         if ($dataType === '\SplFileObject') {
-            $content = $response->getBody(); //stream goes to serializer
+            $content = $response->getBody(); // stream goes to serializer
         } else {
             $content = (string) $response->getBody();
             if ($dataType !== 'string') {
@@ -1564,7 +1545,7 @@ class DocumentApi
         return [
             ObjectSerializer::deserialize($content, $dataType, []),
             $response->getStatusCode(),
-            $response->getHeaders()
+            $response->getHeaders(),
         ];
     }
 

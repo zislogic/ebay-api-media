@@ -14,7 +14,7 @@ final class EbayMediaServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/ebay-api-media.php', 'ebay-api-media');
+        $this->mergeConfigFrom(__DIR__.'/../config/ebay-api-media.php', 'ebay-api-media');
 
         $this->app->singleton(EbayMediaClient::class, function ($app): EbayMediaClient {
             /** @var EbayHttpClient $httpClient */
@@ -34,14 +34,14 @@ final class EbayMediaServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/ebay-api-media.php' => config_path('ebay-api-media.php'),
+            __DIR__.'/../config/ebay-api-media.php' => config_path('ebay-api-media.php'),
         ], 'ebay-api-media-config');
 
         $this->publishes([
-            __DIR__ . '/../database/migrations' => database_path('migrations'),
+            __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'ebay-api-media-migrations');
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
